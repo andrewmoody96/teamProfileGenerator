@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const questionsManager = [
+const questions = [
   {
     type: "input",
     message: "Enter manager name.",
@@ -16,6 +16,13 @@ const questionsManager = [
     type: "input",
     message: "Enter manager's email address.",
     name: "email",
+  },
+
+  {
+    type: "list",
+    name: "managerConfirm",
+    message: "Are you a manager?",
+    choices: ["Yes", "No"],
   },
 
   // Gives the option for a user to continue adding employees.
@@ -41,10 +48,24 @@ const questionsIntern = [
       },
 ]
 
+function Employee(name, ID, email) {
+    this.name = name;
+    this.ID = ID;
+    this.email = email;
+    this.getName = () => {
+        console.log(name);
+    };
+    this.getID = () => {
+        console.log(ID);
+    };
+    this.getEmail = () => {
+        console.log(email);
+    };
+};
 
 
 function init() {
-  inquirer.prompt(questionsManager).then((answers) => {
+  inquirer.prompt(questions).then((answers) => {
     console.log(answers);
     if (answers.addEmployeeConfirm === "Engineer") {
       inquirer.prompt(questionsEngineer).then((answers) => {
@@ -62,3 +83,5 @@ function init() {
 }
 
 init();
+
+module.export(Employee());

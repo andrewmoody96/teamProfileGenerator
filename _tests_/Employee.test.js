@@ -1,4 +1,4 @@
-const Employee = require("../index.js")
+const Employee = require("../index")
 
 describe("Employee", () => {
     it("should return an object containing 'name', 'ID', & 'email' properties, when called with the 'new' keyword", () => {
