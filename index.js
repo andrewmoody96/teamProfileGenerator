@@ -1,20 +1,22 @@
 const inquirer = require("inquirer");
+
+// QUESTIONS
 const questions = [
   {
     type: "input",
-    message: "Enter manager name.",
+    message: "What is your name name?",
     name: "name",
   },
 
   {
     type: "input",
-    message: "Enter manager ID.",
+    message: "Enter employee ID.",
     name: "ID",
   },
 
   {
     type: "input",
-    message: "Enter manager's email address.",
+    message: "Enter your email address.",
     name: "email",
   },
 
@@ -30,58 +32,138 @@ const questions = [
     type: "list",
     name: "addEmployeeConfirm",
     message: "Would you like to add another employee?",
-    choices: ["Engineer", "Intern", "Finish building"],
+    choices: ["Engineer", "Intern", "Finish"],
+    when(answers) {
+      return answers.managerConfirm === "Yes";
+    },
+  },
+
+  // Only displayed if user adds an Engineer to the roster.
+  {
+    type: "input",
+    message: "Enter GitHub username.",
+    name: "github",
+    when(answers) {
+      return answers.addEmployeeConfirm === "Engineer";
+    },
+  },
+
+  // Only displayed if user adds an Intern to the roster.
+  {
+    type: "input",
+    message: "Where do you attend school?",
+    name: "school",
+    when(answers) {
+      return answers.addEmployeeConfirm === "Intern";
+    },
   },
 ];
-const questionsEngineer = [
-    {
-        type: "input",
-        message: "Enter GitHub username.",
-        name: "github",
-      },
-]
-const questionsIntern = [
-    {
-        type: "input",
-        message: "Where do you attend school?",
-        name: "school",
-      },
-]
 
+// CONSTRUCTORS
 function Employee(name, ID, email) {
-    this.name = name;
-    this.ID = ID;
-    this.email = email;
-    this.getName = () => {
-        console.log(name);
-    };
-    this.getID = () => {
-        console.log(ID);
-    };
-    this.getEmail = () => {
-        console.log(email);
-    };
-};
+  // properties
+  this.name = name;
+  this.ID = ID;
+  this.email = email;
+  this.role = "employee"
+  // methods
+  this.getName = () => {
+    console.log(this.name);
+  };
+  this.getID = () => {
+    console.log(this.ID);
+  };
+  this.getEmail = () => {
+    console.log(this.email);
+  };
+  this.getRole = () => {
+    console.log(this.role);
+  }
+}
+function Manager(name, ID, email, office) {
+  // properties
+  this.name = name;
+  this.ID = ID;
+  this.email = email;
+  this.office = office;
+  this.role = "manager";
+  // methods
+  this.getName = () => {
+    console.log(this.name);
+  };
+  this.getID = () => {
+    console.log(this.ID);
+  };
+  this.getEmail = () => {
+    console.log(this.email);
+  };
+  this.getOffice = () => {
+    console.log(this.office);
+  };
+  this.getRole = () => {
+    console.log(this.role);
+  };
+}
+function Engineer(name, ID, email, github) {
+  // properties
+  this.name = name;
+  this.ID = ID;
+  this.email = email;
+  this.github = github;
+  this.role = "engineer";
+  // methods
+  this.getName = () => {
+    console.log(this.name);
+  };
+  this.getID = () => {
+    console.log(this.ID);
+  };
+  this.getEmail = () => {
+    console.log(this.email);
+  };
+  this.getGithub = () => {
+    console.log(this.github);
+  };
+  this.getRole = () => {
+    console.log(this.role);
+  };
+}
+function Intern(name, ID, email, school) {
+  // properties
+  this.name = name;
+  this.ID = ID;
+  this.email = email;
+  this.school = school;
+  this.role = "intern";
+  // methods
+  this.getName = () => {
+    console.log(this.name);
+  };
+  this.getID = () => {
+    console.log(this.ID);
+  };
+  this.getEmail = () => {
+    console.log(this.email);
+  };
+  this.getSchool = () => {
+    console.log(this.school);
+  };
+  this.getRole = () => {
+    console.log(this.role);
+  };
+}
 
+// const testEmployee = new Employee('Andrew', 615, 'andrew.moody96@gmail.com');
+
+// testEmployee.getID();
 
 function init() {
   inquirer.prompt(questions).then((answers) => {
     console.log(answers);
-    if (answers.addEmployeeConfirm === "Engineer") {
-      inquirer.prompt(questionsEngineer).then((answers) => {
-        console.log(answers);
-      });
-    }
-    if (answers.addEmployeeConfirm === "Intern") {
-      inquirer.prompt(questionsIntern).then((answers) => {
-        console.log(answers);
-      });
-    } else {
-        return(answers);
-    }
+    return answers;
   });
 }
 
-init();
+module.exports = Employee, Manager, Engineer, Intern;
 
-module.export(Employee());
+init();
