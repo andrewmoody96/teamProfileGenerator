@@ -4,5 +4,25 @@
   },
   "dependencies": {
     "inquirer": "^8.2.2"
-  }
+  },
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewmoody96/teamProfileGenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewmoody96/teamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/andrewmoody96/teamProfileGenerator#readme",
+  "description": ""
 }
