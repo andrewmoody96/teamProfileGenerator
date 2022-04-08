@@ -27,6 +27,15 @@ const questions = [
     choices: ["Yes", "No"],
   },
 
+  {
+    type: "input",
+    message: "What is your office number?",
+    name: "office",
+    when(answers) {
+      return answers.managerConfirm === "Yes";
+    },
+  },
+
   // Gives the option for a user to continue adding employees.
   {
     type: "list",
@@ -65,7 +74,7 @@ function Employee(name, ID, email) {
   this.name = name;
   this.ID = ID;
   this.email = email;
-  this.role = "employee"
+  const role = "employee"
   // methods
   this.getName = () => {
     console.log(this.name);
@@ -77,7 +86,7 @@ function Employee(name, ID, email) {
     console.log(this.email);
   };
   this.getRole = () => {
-    console.log(this.role);
+    console.log(role);
   }
 }
 function Manager(name, ID, email, office) {
@@ -86,7 +95,7 @@ function Manager(name, ID, email, office) {
   this.ID = ID;
   this.email = email;
   this.office = office;
-  this.role = "manager";
+  const role = "manager";
   // methods
   this.getName = () => {
     console.log(this.name);
@@ -101,7 +110,7 @@ function Manager(name, ID, email, office) {
     console.log(this.office);
   };
   this.getRole = () => {
-    console.log(this.role);
+    console.log(role);
   };
 }
 function Engineer(name, ID, email, github) {
@@ -110,7 +119,7 @@ function Engineer(name, ID, email, github) {
   this.ID = ID;
   this.email = email;
   this.github = github;
-  this.role = "engineer";
+  const role = "engineer";
   // methods
   this.getName = () => {
     console.log(this.name);
@@ -125,7 +134,7 @@ function Engineer(name, ID, email, github) {
     console.log(this.github);
   };
   this.getRole = () => {
-    console.log(this.role);
+    console.log(role);
   };
 }
 function Intern(name, ID, email, school) {
@@ -134,7 +143,7 @@ function Intern(name, ID, email, school) {
   this.ID = ID;
   this.email = email;
   this.school = school;
-  this.role = "intern";
+  const role = "intern";
   // methods
   this.getName = () => {
     console.log(this.name);
@@ -149,7 +158,7 @@ function Intern(name, ID, email, school) {
     console.log(this.school);
   };
   this.getRole = () => {
-    console.log(this.role);
+    console.log(role);
   };
 }
 
@@ -157,6 +166,12 @@ function Intern(name, ID, email, school) {
 
 // testEmployee.getID();
 
+
+// If Manager > change role to "manager"
+// If Intern > change role to "intern"
+// If Engineer > change role to "engineer"
+// Role needs to update depending on user input...
+// Every time the function is run, we need to put an employee into the 'roster.json' as a new object.
 function init() {
   inquirer.prompt(questions).then((answers) => {
     console.log(answers);

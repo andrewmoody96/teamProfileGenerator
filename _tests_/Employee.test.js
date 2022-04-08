@@ -7,5 +7,6 @@ describe("Employee", () => {
         expect("name" in obj).toEqual(true);
         expect("ID" in obj).toEqual(true);
         expect("email" in obj).toEqual(true);
+        console.log(obj);
     })
 });
