@@ -4,12 +4,12 @@ const inquirer = require("inquirer");
 const questions = [
   {
     type: "input",
-    message: "What is your name name?",
+    message: "What is your name?",
     name: "name",
   },
 
   {
-    type: "input",
+    type: "number",
     message: "Enter employee ID.",
     name: "ID",
   },
@@ -21,10 +21,9 @@ const questions = [
   },
 
   {
-    type: "list",
+    type: "confirm",
     name: "managerConfirm",
     message: "Are you a manager?",
-    choices: ["Yes", "No"],
   },
 
   {
@@ -34,6 +33,9 @@ const questions = [
     when(answers) {
       return answers.managerConfirm === "Yes";
     },
+
+    type: "input",
+    name: "role",
   },
 
   // Gives the option for a user to continue adding employees.
@@ -43,6 +45,7 @@ const questions = [
     message: "Would you like to add another employee?",
     choices: ["Engineer", "Intern", "Finish"],
     when(answers) {
+        
       return answers.managerConfirm === "Yes";
     },
   },
@@ -110,7 +113,7 @@ function Manager(name, ID, email, office) {
     console.log(this.office);
   };
   this.getRole = () => {
-    console.log(role);
+    return role;
   };
 }
 function Engineer(name, ID, email, github) {
@@ -174,6 +177,11 @@ function Intern(name, ID, email, school) {
 // Every time the function is run, we need to put an employee into the 'roster.json' as a new object.
 function init() {
   inquirer.prompt(questions).then((answers) => {
+    if (answers.managerConfirm === "Yes") {
+        console.log("employee is a manager");
+        const testManager = new Manager('Andrew', '42069', 'andrew.mood96@gmail.com', '615');
+        console.log(testManager);
+    }
     console.log(answers);
     return answers;
   });

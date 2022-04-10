@@ -8,6 +8,7 @@ describe("Manager", () => {
         expect("ID" in obj).toEqual(true);
         expect("email" in obj).toEqual(true);
         expect("office" in obj).toEqual(false);
+        expect("role" in obj).toEqual(false);
         // expect("role" in obj).toBe();
         console.log(obj);
     })
