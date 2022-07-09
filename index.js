@@ -149,20 +149,17 @@ function generateHTML() {
   let managerContent = `<div class="teamMember"><div class="dataRow">`;
   managers.forEach((manager) => {
     managerContent =
-      managerContent +
       `<h5>${manager.name}</h5><h5>${manager.ID}</h5></div><div class="dataRow"><h5>${manager.office}</h5><h5>${manager.email}</h5></div>`;
   });
 
   let engineerContent = `<div class="teamMember"><div class="dataRow">`;
   engineers.forEach((engineer) => {
-    engineerContent = engineerContent`<h5>${engineer.name}</h5><h5>${engineer.ID}</h5></div><div class="dataRow"><h5>${engineer.github}</h5><h5>${engineer.email}</h5></div>`;
+    engineerContent = `<h5>${engineer.name}</h5><h5>${engineer.ID}</h5></div><div class="dataRow"><h5>${engineer.github}</h5><h5>${engineer.email}</h5></div>`;
   });
 
   let internContent = `<div class="teamMember"><div class="dataRow">`;
   interns.forEach((intern) => {
-    internContent =
-      internContent +
-      `<h5>${intern.name}</h5><h5>${intern.ID}</h5></div><div class="dataRow"><h5>${intern.school}</h5><h5>${intern.email}</h5></div></div>`;
+    internContent =`<h5>${intern.name}</h5><h5>${intern.ID}</h5></div><div class="dataRow"><h5>${intern.school}</h5><h5>${intern.email}</h5></div></div>`;
   });
 
   const beginHTML = `<!DOCTYPE html>
@@ -188,13 +185,13 @@ function generateHTML() {
             <h3>Engineers</h3>
             ${engineerContent}
           </div>
-          <div id="managers">
-            <h3>Managers</h3>
-            ${managerContent}
-          </div>
           <div id="interns">
             <h3>Interns</h3>
             ${internContent}
+          </div>
+          <div id="managers">
+            <h3>Managers</h3>
+            ${managerContent}
           </div>
         </div>  
       </article>`;
