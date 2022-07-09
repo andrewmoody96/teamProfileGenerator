@@ -1,3 +1,41 @@
 body {
     background-color: lightgrey;
 }
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#teamName {
+    text-align: center;
+}
+
+#teamConatiner {
+    display: flex;
+    flex-direction: column;
+}
+
+/* #teamConatiner div{
+    display: flex;
+    flex-direction: column;
+} */
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#contactOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#contactOptions h4 {
+    margin: 0 10px;
+}

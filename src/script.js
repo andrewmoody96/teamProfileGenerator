@@ -1,5 +1,8 @@
-import { managers, engineers, interns } from "../index";
+import { managers, engineers, interns } from "../index.js";
 
-console.log(managers);
-console.log(engineers);
-console.log(interns);
+
+window.onclick(console.log(managers));
+
+// console.log(managers);
+// console.log(engineers);
+// console.log(interns);
