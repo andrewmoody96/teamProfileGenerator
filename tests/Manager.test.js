@@ -1,4 +1,4 @@
-const Manager = require("../Assets/Scripts/index.js")
+const Manager = require("../index.js")
 
 // Tests to make sure all required properties are included in Employee object.
 describe("Manager", () => {

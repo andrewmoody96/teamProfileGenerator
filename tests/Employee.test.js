@@ -1,4 +1,4 @@
-const Employee = require("../Assets/Scripts/index.js")
+const Employee = require("../index.js")
 
 // Tests to make sure all required properties are included in Employee object.
 describe("Employee", () => {
