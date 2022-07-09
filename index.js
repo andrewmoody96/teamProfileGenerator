@@ -96,7 +96,7 @@ let engineers = [];
 let interns = [];
 
 
-function init() {
+function start() {
   inquirer.prompt(questions).then((answers) => {
     if (answers.roleConfirm === "Manager") {
       console.log("Employee is a manager.");
@@ -130,7 +130,7 @@ function init() {
       console.log(newIntern);
     }
     if (answers.addEmployeeConfirm === "Yes") {
-      init();
+      start();
     } else {
       console.log("Goodbye!");
       process.exit(0);
@@ -138,6 +138,6 @@ function init() {
   });
 }
 
-init();
+start();
 
 module.exports = (managers, engineers, interns);
