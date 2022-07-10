@@ -87,8 +87,6 @@ function Employee(name, ID, email) {
   }
 }
 
-let testEmployee = new Employee("Andrew", 33, "amoody@millikin.edu");
-
 function Manager(name, ID, email, office) {
   // properties
   this.name = name;
