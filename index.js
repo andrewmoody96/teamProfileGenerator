@@ -66,6 +66,29 @@ const questions = [
 ];
 
 // CONSTRUCTORS
+function Employee(name, ID, email) {
+  // properties
+  this.name = name;
+  this.ID = ID;
+  this.email = email;
+  const role = "employee"
+  // methods
+  this.getName = () => {
+    console.log(this.name);
+  };
+  this.getID = () => {
+    console.log(this.ID);
+  };
+  this.getEmail = () => {
+    console.log(this.email);
+  };
+  this.getRole = () => {
+    console.log(role);
+  }
+}
+
+let testEmployee = new Employee("Andrew", 33, "amoody@millikin.edu");
+
 function Manager(name, ID, email, office) {
   // properties
   this.name = name;
@@ -95,6 +118,11 @@ function Intern(name, ID, email, school) {
 let managers = [];
 let engineers = [];
 let interns = [];
+
+// HTML STRINGS
+let engineerContent = ``;
+let internContent = ``;
+let managerContent = ``;
 
 function start() {
   // resets employee array values;
@@ -139,30 +167,18 @@ function start() {
       start();
     } else {
       console.log("Goodbye!");
-      generateHTML();
-      process.exit(0);
-    }
-  });
-}
+      engineers.forEach((engineer) => {
+        engineerContent = `<div class="dataRow flex-row m-2"><h5>${engineer.name}</h5><h5>${engineer.ID}</h5></div><div class="dataRow flex-row m-2"><h5>${engineer.school}</h5><h5>${engineer.email}</h5></div>`;
+      });
 
-function generateHTML() {
-  let managerContent = `<div class="teamMember"><div class="dataRow">`;
-  managers.forEach((manager) => {
-    managerContent =
-      `<h5>${manager.name}</h5><h5>${manager.ID}</h5></div><div class="dataRow"><h5>${manager.office}</h5><h5>${manager.email}</h5></div>`;
-  });
+      interns.forEach((intern) => {
+        internContent = `<div class="dataRow flex-row m-2"><h5>${intern.name}</h5><h5>${intern.ID}</h5></div><div class="dataRow flex-row m-2"><h5>${intern.school}</h5><h5>${intern.email}</h5></div>`;
+      });
 
-  let engineerContent = `<div class="teamMember"><div class="dataRow">`;
-  engineers.forEach((engineer) => {
-    engineerContent = `<h5>${engineer.name}</h5><h5>${engineer.ID}</h5></div><div class="dataRow"><h5>${engineer.github}</h5><h5>${engineer.email}</h5></div>`;
-  });
-
-  let internContent = `<div class="teamMember"><div class="dataRow">`;
-  interns.forEach((intern) => {
-    internContent =`<h5>${intern.name}</h5><h5>${intern.ID}</h5></div><div class="dataRow"><h5>${intern.school}</h5><h5>${intern.email}</h5></div></div>`;
-  });
-
-  const beginHTML = `<!DOCTYPE html>
+      managers.forEach((manager) => {
+        managerContent = `<div class="dataRow flex-row m-2"><h5>${manager.name}</h5><h5>${manager.ID}</h5></div><div class="dataRow flex-row m-2"><h5>${manager.office}</h5><h5>${manager.email}</h5></div>`;
+      });
+      const beginHTML = `<!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -179,23 +195,31 @@ function generateHTML() {
       <header class="flex">
           <h1 class="text-center">Your Team</h1>
       </header>`;
-  const contentHTML = `<article>
+
+      // CHECK HOW THIS RENDERS AGAIN
+      const contentHTML = `<article>
         <div id="teamConatiner">
           <div id="engineers">
             <h3>Engineers</h3>
-            ${engineerContent}
+            <div>
+              ${engineerContent}
+            </div>
           </div>
           <div id="interns">
             <h3>Interns</h3>
-            ${internContent}
+            <div>
+              ${internContent}
+            </div>
           </div>
           <div id="managers">
             <h3>Managers</h3>
-            ${managerContent}
+            <div>
+              ${managerContent}
+            </div>
           </div>
         </div>  
       </article>`;
-  const endHTML = `<footer id="footer">
+      const endHTML = `<footer id="footer">
     <p>This web page was dynamically generated using node.js.</p>
     <section id="contactme-id" class="contactme">
         <h4>Contact the Developer</h2>
@@ -231,9 +255,15 @@ function generateHTML() {
   </body>
   </html>;`;
 
-  const HTML = beginHTML + contentHTML + endHTML;
-  console.log(HTML);
-  fs.writeFileSync("./src/index.html", HTML);
+      const HTML = beginHTML + contentHTML + endHTML;
+      fs.writeFileSync("./src/index.html", HTML);
+
+      // Quits the App
+      process.exit(0);
+    }
+  });
 }
+
+module.exports = Employee, Manager, Engineer, Intern;
 
 start();

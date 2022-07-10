@@ -3,7 +3,7 @@
 
 ## Description
 
-This app generates a webpage that displays employee information. The employee information is defined by the user's input. -- APP IS CURRENTLY BROKEN...I AM BEHIND SCHEDULED AFTER A TOUGH COUPLE OF WEEKS.
+This node app allows users to create rosters for a company and then generates an index.html page with the roster information. 
 
 ---
 ## Table of Contents
