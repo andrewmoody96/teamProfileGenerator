@@ -25,6 +25,17 @@ npm i -- For now, clone the repo and run the code in your terminal.
 
 The app will ask questions about the employee using the program. After the questions have all been answered, the app will generate an HTML page with all of the dynamically created employees.
 
+### Video Demo
+
+[Click here to watch a video demo.](https://drive.google.com/file/d/1VdDTw9Wk1g5uZe6A4YYP0oHfLg4o6pSs/view?usp=sharing)
+
+### Screenshots
+![Code in the terminal showing successful object creation.](./assets/images/teamGenTerminal.png)
+
+![All of the tests are passing.](./assets/images/teamGenTests.png)
+<br>
+
+
 ---
 ## Contributing
 
